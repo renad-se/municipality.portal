@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة التقارير الأسبوعية | بلدية حوطة بني تميم</title>
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS for modern responsive layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        municipality: {
+                            dark: '#004B23',
+                            primary: '#006C35',
+                            hover: '#008542',
+                            light: '#EAF4EC',
+                            accent: '#D4AF37',
+                            accentHover: '#C5A02E',
+                            bg: '#F4F7F5'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #F4F7F5;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #006C35;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-gray-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-white shadow-sm border-b-2 border-municipality-primary sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Right: Logo & Title -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <!-- Emblem Representation -->
+                    <div class="w-14 h-14 bg-municipality-light rounded-full flex items-center justify-center border-2 border-municipality-primary">
+                        <svg class="w-8 h-8 text-municipality-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-municipality-dark leading-tight">بلدية حوطة بني تميم</h1>
+                        <p class="text-xs text-gray-500 font-medium">بوابة التحول الرقمي للتقارير الأسبوعية</p>
+                    </div>
+                </div>
+
+                <!-- Left: Quick Links & Theme Indicator -->
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <button onclick="showSection('dashboard')" class="px-4 py-2 text-sm font-semibold text-municipality-primary hover:bg-municipality-light rounded-lg transition">الرئيسية</button>
+                    <button onclick="showSection('admin-panel')" class="px-4 py-2 text-sm font-semibold text-white bg-municipality-primary hover:bg-municipality-hover rounded-lg transition shadow-md flex items-center">
+                        <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        لوحة التحكم والتقارير
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- SECTION 1: DASHBOARD (Department Cards Grid) -->
+        <section id="dashboard-section" class="space-y-8">
+            <!-- Welcome Hero -->
+            <div class="bg-gradient-to-r from-municipality-dark to-municipality-primary rounded-2xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-municipality-accent text-municipality-dark text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">نظام تقارير الإنجاز</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold mt-4 mb-3">المنصة الموحدة لإدخال التقارير الأسبوعية</h2>
+                    <p class="text-sm sm:text-base text-gray-100 leading-relaxed font-light">
+                        مرحباً بك في النظام الداخلي المطور لبلدية حوطة بني تميم. يرجى اختيار الإدارة المعنية لتعبئة نموذج الإنجاز الأسبوعي مباشرة بطريقة تفاعلية وبدون الحاجة لربط خارجي.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Header & Subtitle for cards -->
+            <div class="text-center sm:text-right">
+                <h3 class="text-xl font-bold text-gray-800">إدارات وأقسام البلدية</h3>
+                <p class="text-sm text-gray-500 mt-1">اختر الإدارة لرفع التقرير الخاص بها لإنشاء تقرير إنجاز متكامل</p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: الشؤون المالية -->
+                <div onclick="openForm('إدارة الشؤون المالية', 'financial')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة الشؤون المالية</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">رصد المراجعين وإنجازات الشؤون المالية بالأرقام الأسبوعية.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Card 2: الشؤون الإدارية والموارد البشرية -->
+                <div onclick="openForm('إدارة الشؤون الإدارية والموارد البشرية', 'hr')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة الشؤون الإدارية والموارد البشرية</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">منجزات الاتصالات الإدارية، التطوير الإداري، ومؤشرات القوى العاملة.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Card 3: إدارة الشؤون الفنية -->
+                <div onclick="openForm('إدارة الشؤون الفنية', 'technical')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة الشؤون الفنية</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">رخص المبناء، الرقابة الفنية، إحصائيات المشاريع، واللوحات الإرشادية.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Card 4: إدارة الشؤون القانونية -->
+                <div onclick="openForm('إدارة الشؤون القانونية', 'legal')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة الشؤون القانونية</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">القضايا المنظورة، الأحكام الصادرة، والمبالغ القضائية المحصلة والخاسرة.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Card 5: إدارة الأراضي -->
+                <div onclick="openForm('إدارة الأراضي', 'lands')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة الأراضي</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">إحصائيات إزالة التعديات العشوائية، وطلبات الحجج والمنح البلدي.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Card 6: إدارة الاستثمار وتنمية الواردات -->
+                <div onclick="openForm('إدارة الاستثمار وتنمية الواردات', 'investments')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة الاستثمار وتنمية الواردات</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">الفرص الاستثمارية المطروحة والمغلقة، تحصيل الإيجارات والإزالات.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Card 7: إدارة صحة البيئة -->
+                <div onclick="openForm('إدارة صحة البيئة', 'environment')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة صحة البيئة</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">مؤشرات كميات النظافة، الرقابة الصحية على المحلات، وإصدار الرخص.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Card 8: إدارة الخدمات -->
+                <div onclick="openForm('إدارة الخدمات', 'services')" class="group bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-100 p-6 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-municipality-primary group-hover:bg-municipality-primary group-hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 mb-4 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13a1 1 0 01-1 1h-6a1 1 0 01-1-1V9a1 1 0 011-1h6a1 1 0 011 1v4zM5 21a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v12a2 2 0 01-2 2H5z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 group-hover:text-municipality-primary transition-colors">إدارة الخدمات</h4>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">صيانة الطرق، الحدائق والتجميل، التشغيل، الكهرباء، وطوارئ 940.</p>
+                    </div>
+                    <div class="mt-6 flex items-center text-sm font-semibold text-municipality-primary group-hover:translate-x-1 transition-transform">
+                        <span>البدء بالتقرير</span>
+                        <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INTEGRATED INTERACTIVE FORM (Replaces Google Forms) -->
+        <section id="form-section" class="hidden max-w-3xl mx-auto">
+            <!-- Back button & Header -->
+            <button onclick="showSection('dashboard')" class="mb-6 flex items-center text-sm font-semibold text-gray-500 hover:text-municipality-primary transition">
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                العودة للرئيسية
+            </button>
+
+            <!-- Form Container Card -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                <!-- Top Decorative Banner (matches Gov Header) -->
+                <div class="bg-gradient-to-r from-municipality-dark to-municipality-primary px-8 py-6 text-white flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-semibold text-municipality-accent tracking-wider" id="form-formtag">#التقرير الأسبوعي</span>
+                        <h3 class="text-xl sm:text-2xl font-bold mt-1" id="form-depname">إدارة الشؤون المالية</h3>
+                    </div>
+                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Form Progress Steps Tracker -->
+                <div class="bg-municipality-light/40 px-8 py-4 border-b border-gray-100 flex items-center justify-between text-xs sm:text-sm">
+                    <div class="flex items-center space-x-2 space-x-reverse" id="step-indicator-1">
+                        <span class="w-6 h-6 rounded-full bg-municipality-primary text-white font-bold flex items-center justify-center text-xs">١</span>
+                        <span class="font-bold text-municipality-primary">البيانات العامة</span>
+                    </div>
+                    <div class="h-0.5 bg-gray-200 flex-grow mx-4"></div>
+                    <div class="flex items-center space-x-2 space-x-reverse text-gray-400" id="step-indicator-2">
+                        <span class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 font-bold flex items-center justify-center text-xs">٢</span>
+                        <span class="font-semibold">تفاصيل الإنجاز</span>
+                    </div>
+                    <div class="h-0.5 bg-gray-200 flex-grow mx-4"></div>
+                    <div class="flex items-center space-x-2 space-x-reverse text-gray-400" id="step-indicator-3">
+                        <span class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 font-bold flex items-center justify-center text-xs">٣</span>
+                        <span class="font-semibold">تأكيد وإرسال</span>
+                    </div>
+                </div>
+
+                <!-- Main Form Tag -->
+                <form id="municipality-form" class="p-8 space-y-6" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" id="hidden-dep-name" name="department_name" value="">
+                    <input type="hidden" id="hidden-dep-key" name="department_key" value="">
+
+                    <!-- STEP 1: General Info (STRICTLY UNTOUCHED: Date & Operator Name) -->
+                    <div id="form-step-1" class="space-y-6">
+                        <!-- Date Picker Field -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-700">التاريخ <span class="text-red-500">*</span></label>
+                            <input type="date" id="report-date" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-municipality-primary focus:border-municipality-primary outline-none transition text-gray-700 font-semibold">
+                            <p class="text-xs text-gray-400">حدد تاريخ تقديم هذا التقرير الأسبوعي.</p>
+                        </div>
+
+                        <!-- Data Entry Operator Name -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-700">اسم مدخل البيانات <span class="text-red-500">*</span></label>
+                            <input type="text" id="report-operator" required placeholder="يرجى كتابة الاسم الثلاثي كاملاً" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-municipality-primary focus:border-municipality-primary outline-none transition text-gray-700">
+                        </div>
+
+                        <!-- Section Dropdown IF Services Department -->
+                        <div id="services-section-selector-container" class="hidden space-y-2 bg-emerald-50/60 p-4 rounded-xl border border-emerald-100">
+                            <label class="block text-sm font-bold text-municipality-dark">اختر القسم الفرعي لـ (إدارة الخدمات) <span class="text-red-500">*</span></label>
+                            <select id="services-sub-department" onchange="handleServicesSubDeptChange()" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-municipality-primary focus:border-municipality-primary outline-none transition text-gray-800 font-bold bg-white">
+                                <option value="roads">صيانة الطرق والمرافق</option>
+                                <option value="gardens">الحدائق والتجميل</option>
+                                <option value="operations">التشغيل والصيانة</option>
+                                <option value="electricity">الكهرباء والإنارة</option>
+                                <option value="emergency940">وحدة طوارئ 940</option>
+                            </select>
+                        </div>
+
+                        <!-- Info box dynamic -->
+                        <div class="bg-amber-50 border-r-4 border-amber-500 p-4 rounded-xl">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                                </div>
+                                <div class="mr-3">
+                                    <p class="text-xs text-amber-800 font-semibold leading-relaxed">بناءً على تعليمات سعادة رئيس البلدية وتوجيهات الأمانة بخصوص الرفع الأسبوعي لمنجزات البلدية، يرجى ملء كافة تفاصيل الإنجاز بعناية ليتم رفعها فورياً لمقام الأمانة.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end pt-4">
+                            <button type="button" onclick="nextStep()" class="px-6 py-3 bg-municipality-primary hover:bg-municipality-hover text-white font-bold rounded-xl transition shadow-md flex items-center">
+                                الخطوة التالية
+                                <svg class="w-4 h-4 mr-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Department-specific Details -->
+                    <div id="form-step-2" class="hidden space-y-6">
+                        <!-- Dynamic department-specific fields will be populated here -->
+                        <div id="dynamic-fields-container" class="space-y-6">
+                            <!-- JS loaded inputs -->
+                        </div>
+
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="prevStep()" class="px-6 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl transition">الرجوع للسابق</button>
+                            <button type="button" onclick="nextStep()" class="px-6 py-3 bg-municipality-primary hover:bg-municipality-hover text-white font-bold rounded-xl transition shadow-md flex items-center">
+                                مراجعة وتأكيد
+                                <svg class="w-4 h-4 mr-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Confirm and Submit -->
+                    <div id="form-step-3" class="hidden space-y-6">
+                        <div class="border border-gray-200 rounded-xl overflow-hidden divide-y divide-gray-100">
+                            <div class="bg-gray-50 px-6 py-4 font-bold text-gray-700 text-sm">مراجعة بيانات التقرير قبل الإرسال الفعلي</div>
+                            
+                            <div class="p-6 space-y-4 text-sm" id="report-summary-view">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 border-r-4 border-green-500 p-4 rounded-xl flex items-start">
+                            <svg class="h-5 w-5 text-green-600 mt-0.5 ml-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <p class="text-xs text-green-800 font-medium leading-relaxed">
+                                بالضغط على إرسال التقرير، سيتم حفظ التقرير محلياً في لوحة التحكم وتحديث البيانات فورياً. يمكنك تتبع التقارير المصدرة من خلال صفحة الإدارة.
+                            </p>
+                        </div>
+
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="prevStep()" class="px-6 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl transition">تعديل البيانات</button>
+                            <button type="submit" class="px-8 py-3 bg-municipality-primary hover:bg-municipality-hover text-white font-bold rounded-xl transition shadow-md flex items-center">
+                                إرسال التقرير النهائي
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Success Screen State -->
+                <div id="form-success-state" class="hidden p-8 text-center space-y-6">
+                    <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto animate-bounce shadow-inner">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-2xl font-bold text-gray-800">تم إرسال وحفظ التقرير بنجاح!</h4>
+                        <p class="text-sm text-gray-500 max-w-md mx-auto">تم توثيق هذا التقرير الأسبوعي وحفظه ضمن قاعدة البيانات المحلية للبلدية. يمكنك الآن استعراضه أو تصديره في أي وقت.</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-3 space-x-reverse max-w-sm mx-auto pt-4">
+                        <button onclick="showSection('dashboard')" class="flex-1 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition text-sm">
+                            العودة للرئيسية
+                        </button>
+                        <button onclick="showSection('admin-panel')" class="flex-1 px-4 py-2.5 bg-municipality-primary hover:bg-municipality-hover text-white font-bold rounded-lg transition text-sm shadow">
+                            مشاهدة التقرير في لوحة التحكم
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: ADMIN CONTROL PANEL (Database View & Export Tools) -->
+        <section id="admin-panel-section" class="hidden space-y-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800">لوحة التحكم وإدارة التقارير الأسبوعية</h3>
+                    <p class="text-sm text-gray-500 mt-1">هنا تجتمع وتُحفظ كافة التقارير المرفوعة محلياً لسهولة البحث والمراجعة والتصدير.</p>
+                </div>
+                <div class="flex space-x-2 space-x-reverse">
+                    <button onclick="clearDatabase()" class="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 font-bold rounded-lg transition text-sm border border-red-200">
+                        مسح كافة البيانات
+                    </button>
+                    <button onclick="exportAllToCSV()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition text-sm shadow-md flex items-center">
+                        <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        تصدير كـ Excel (CSV)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats widgets -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center space-x-4 space-x-reverse">
+                    <div class="p-3.5 bg-municipality-light text-municipality-primary rounded-xl">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h5 class="text-sm font-semibold text-gray-400">إجمالي التقارير المرفوعة</h5>
+                        <p class="text-2xl font-bold text-gray-800" id="stat-total">0</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center space-x-4 space-x-reverse">
+                    <div class="p-3.5 bg-amber-50 text-amber-600 rounded-xl">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h5 class="text-sm font-semibold text-gray-400">تاريخ آخر تقرير</h5>
+                        <p class="text-lg font-bold text-gray-800" id="stat-last-date">-</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center space-x-4 space-x-reverse">
+                    <div class="p-3.5 bg-sky-50 text-sky-600 rounded-xl">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h5 class="text-sm font-semibold text-gray-400">آخر مدخل بيانات</h5>
+                        <p class="text-lg font-bold text-gray-800 truncate max-w-[180px]" id="stat-last-user">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Table Filter -->
+            <div class="bg-white rounded-xl shadow border border-gray-100 overflow-hidden">
+                <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <h4 class="font-bold text-gray-800">قائمة التقارير المسجلة</h4>
+                    <div class="flex items-center space-x-2 space-x-reverse w-full sm:w-auto">
+                        <select id="filter-department" onchange="loadReportsTable()" class="px-3 py-2 text-xs font-semibold rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-municipality-primary">
+                            <option value="ALL">جميع الإدارات</option>
+                            <option value="financial">إدارة الشؤون المالية</option>
+                            <option value="hr">الشؤون الإدارية والموارد البشرية</option>
+                            <option value="technical">إدارة الشؤون الفنية</option>
+                            <option value="legal">إدارة الشؤون القانونية</option>
+                            <option value="lands">إدارة الأراضي</option>
+                            <option value="investments">إدارة الاستثمار وتنمية الإيرادات</option>
+                            <option value="environment">إدارة صحة البيئة</option>
+                            <option value="services">إدارة الخدمات</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Desktop and Mobile Friendly Table wrapper -->
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-right text-sm">
+                        <thead class="bg-gray-50 text-gray-600 font-bold uppercase text-xs border-b border-gray-100">
+                            <tr>
+                                <th class="px-6 py-4">الإدارة</th>
+                                <th class="px-6 py-4">التاريخ</th>
+                                <th class="px-6 py-4">مدخل البيانات</th>
+                                <th class="px-6 py-4">الإنجازات المرصودة</th>
+                                <th class="px-6 py-4 text-center">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports-table-body" class="divide-y divide-gray-100 text-gray-700">
+                            <!-- Populated dynamically via Javascript -->
+                        </tbody>
+                    </table>
+                    <div id="empty-state" class="hidden p-12 text-center text-gray-400 space-y-2">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <p class="font-semibold">لا توجد تقارير مرفوعة حالياً</p>
+                        <p class="text-xs text-gray-300">حدد إدارة من الصفحة الرئيسية لرفع تقريرك الأول.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer of the page -->
+    <footer class="bg-municipality-dark text-white/80 py-6 border-t border-municipality-primary mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm space-y-2">
+            <p class="font-bold text-white">بلدية حوطة بني تميم - جميع الحقوق محفوظة &copy; 2026</p>
+            <p class="text-white/60">تم التطوير البرمجي لتعويض النماذج والمواقع الجاهزة بحلول متكاملة آمنة تدعم التحول الرقمي البلدي.</p>
+        </div>
+    </footer>
+
+    <!-- Form Detail View Modal -->
+    <div id="report-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-gray-100 max-h-[90vh] flex flex-col">
+            <div class="bg-municipality-primary p-4 text-white font-bold flex justify-between items-center">
+                <span>تفاصيل التقرير الأسبوعي</span>
+                <button onclick="closeModal()" class="text-white/80 hover:text-white">&times;</button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 text-sm" id="modal-content">
+                <!-- Loaded dynamically -->
+            </div>
+            <div class="bg-gray-50 p-4 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded-lg transition text-xs">إغلاق نافذة العرض</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Database Structure: Simulated LocalStorage Database
+        let db = JSON.parse(localStorage.getItem('municipality_db')) || [];
+
+        // Global State
+        let currentForm = {
+            depName: '',
+            depKey: '',
+            currentStep: 1
+        };
+
+        // Complete & Exact Department Dynamic Field Definitions Extracted From Screenshots
+        const departmentDataStructures = {
+            financial: [
+                { category: 'بيانات الإنجاز', fields: [
+                    { id: 'fin-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'fin-achievements', label: 'اذكر الإنجاز بالأرقام للفترة المذكورة', type: 'textarea', required: true, placeholder: 'تفاصيل الإنجاز بالأرقام...' }
+                ]}
+            ],
+            hr: [
+                { category: 'منجزات الاتصالات الإدارية', fields: [
+                    { id: 'hr-outgoing', label: 'عدد معاملات الصادر', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'hr-incoming', label: 'عدد معاملات الوارد', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'منجزات التطوير الإداري', fields: [
+                    { id: 'hr-train-announced', label: 'عدد البرامج التدريبية المعلنة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'hr-train-nominated', label: 'عدد البرامج التدريبية التي تم ترشيح الموظفين عليها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'hr-train-accepted', label: 'عدد البرامج التدريبية التي تم قبول الموظفين عليها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'hr-train-workshops', label: 'عدد ورش العمل التي أقيمت بالصالة التدريبية', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'منجزات القوى العاملة', fields: [
+                    { id: 'hr-promotions', label: 'عدد ترقيات الموظفين', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'hr-assignments', label: 'عدد قرارات التكليف', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'hr-rotations', label: 'عدد الموظفين الذين تم تدويرهم', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'hr-heads-assigned', label: 'عدد مدراء الأقسام تم تكليفهم', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]}
+            ],
+            technical: [
+                { category: 'منجزات الرخص ورقابة المباني', fields: [
+                    { id: 'tech-inspections', label: 'عدد الجولات الميدانية الفنية', type: 'number', required: false, placeholder: 'أدخل العدد' },
+                    { id: 'tech-build-lic', label: 'عدد رخص البناء', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-fence-lic', label: 'عدد رخص التسوير', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-renovate-lic', label: 'عدد رخص الترميم', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-demo-lic', label: 'عدد رخص الهدم', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-dig-lic', label: 'عدد رخص الحفريات', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-survey-report', label: 'تقرير مساحي', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-subdivision', label: 'تجزئة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-completion-cert', label: 'شهادة إتمام بناء', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-removal-shacks', label: 'عدد إزالات المظلات أو الهناجر لمواقف السيارات المخالفة داخل الأحياء', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-vacant-fence', label: 'عدد الأمتار الطولية لتسوير الأراضي الفضاء الواقعة على المحاور الرئيسية', type: 'number', required: true, placeholder: 'أدخل الأمتار' }
+                ]},
+                { category: 'المشاريع', fields: [
+                    { id: 'tech-sidewalks-m', label: 'عدد الأمتار الطولية للأرصفة والجزر الوسطية', type: 'number', required: true, placeholder: 'أدخل الأمتار' },
+                    { id: 'tech-green-m2', label: 'عدد الأمتار المربعة للمسطحات الخضراء', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                    { id: 'tech-roads-m2', label: 'عدد الأمتار المربعة لأعمال الطرق', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                    { id: 'tech-walkways-m2', label: 'عدد الأمتار المربعة لممرات المشاة', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                    { id: 'tech-lighting-proj', label: 'عدد مشاريع الإنارة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-guide-signs', label: 'لوحات إرشادية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-naming-signs', label: 'لوحة تسمية وترقيم', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-repaired-signs', label: 'عدد اللوحات التي تم إصلاح أرقام المباني لها أو لوحات مسميات الشوارع', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'منجزات أخرى', fields: [
+                    { id: 'tech-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'tech-other-notes', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                ]}
+            ],
+            legal: [
+                { category: 'منجزات إدارة الشؤون القانونية', fields: [
+                    { id: 'leg-cases-pending', label: 'عدد القضايا منظورة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'leg-cases-against', label: 'عدد القضايا المرفوعة ضد البلدية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'leg-cases-by', label: 'عدد القضايا المرفوعة من البلدية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'leg-verdicts-for', label: 'أحكام قضايا صادرة لصالح البلدية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'leg-verdicts-against', label: 'أحكام قضايا صادرة ضد البلدية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'leg-amounts-won', label: 'إجمالي المبالغ التي كسبتها البلدية قضائياً', type: 'number', required: true, placeholder: 'أدخل المبلغ بالريال' },
+                    { id: 'leg-amounts-lost', label: 'إجمالي المبالغ التي خسرتها البلدية قضائياً', type: 'number', required: true, placeholder: 'أدخل المبلغ بالريال' },
+                    { id: 'leg-amounts-collecting', label: 'إجمالي المبالغ الجاري تحصيلها لصالح البلدية', type: 'number', required: true, placeholder: 'أدخل المبلغ بالريال' }
+                ]},
+                { category: 'منجزات أخرى', fields: [
+                    { id: 'leg-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'leg-other-notes', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                ]}
+            ],
+            lands: [
+                { category: 'منجزات التعديات', fields: [
+                    { id: 'land-encroach-req', label: 'عدد طلبات التعديات', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'land-encroach-done', label: 'عدد المنجز منها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'land-encroach-remain', label: 'عدد المتبقي', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'land-removed-camps', label: 'عدد الاستراحات وأحواش الماشية والصنادق والعشش والمخيمات التي تم إزالتها والمنتشرة عشوائياً', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'منجزات قسم الحجج والمنح', fields: [
+                    { id: 'land-grants-req', label: 'عدد طلبات الحجج والمنح', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'land-grants-done', label: 'عدد المنجز منها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'land-grants-remain', label: 'عدد المتبقي', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'منجزات أخرى', fields: [
+                    { id: 'land-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'land-other-notes', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                ]}
+            ],
+            investments: [
+                { category: 'منجزات الاستثمار', fields: [
+                    { id: 'inv-opps-opened', label: 'عدد الفرص الاستثمارية المطروحة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'inv-opps-closed', label: 'عدد الفرص الاستثمارية المغلقة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'inv-rent-collected-count', label: 'عدد الإيجارات المحصلة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'inv-rent-uncollected-count', label: 'عدد الإيجارات الغير محصلة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'inv-amounts-collected', label: 'المبالغ المحصلة', type: 'number', required: true, placeholder: 'أدخل المبلغ بالريال' },
+                    { id: 'inv-ads-removed', label: 'إزالة اللوحات الدعائية المخالفة', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'منجزات أخرى', fields: [
+                    { id: 'inv-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'inv-other-notes', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                ]}
+            ],
+            environment: [
+                { category: 'منجزات قسم النظافة', fields: [
+                    { id: 'env-waste-house', label: 'كمية المخلفات المنزلية / طن', type: 'number', required: true, placeholder: 'أدخل الأطنان' },
+                    { id: 'env-waste-sweep', label: 'كمية مخلفات الكنس / طن', type: 'number', required: true, placeholder: 'أدخل الأطنان' },
+                    { id: 'env-waste-build', label: 'كمية مخلفات البناء والهدم/ طن', type: 'number', required: true, placeholder: 'أدخل الأطنان' },
+                    { id: 'env-waste-solid', label: 'نفايات صلبة / طن', type: 'number', required: true, placeholder: 'أدخل الأطنان' },
+                    { id: 'env-sweep-rounds', label: 'جولات الكنس', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-transport-rounds', label: 'جولات نقل المخلفات', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-workforce', label: 'الأيدي العاملة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-machinery', label: 'الآليات', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-junk-cars', label: 'إزالة السيارات التالفة والمهملة من الشوارع العامة والميادين', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-bins-fix', label: 'معالجة وضع حاويات النظافة داخل الأحياء/ حاوية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-bins-sanitize', label: 'تعقيم الحاويات / طن', type: 'number', required: true, placeholder: 'أدخل الأطنان' }
+                ]},
+                { category: 'قسم الرقابة الصحية', fields: [
+                    { id: 'env-health-rounds', label: 'عدد الجولات الرقابية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-sanitation-rounds', label: 'جولات إصحاح بيئي', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-violations', label: 'عدد المخالفات', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-closed-shops', label: 'منشآت تم إغلاقها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-sanitized-sites', label: 'مواقع تم تطهيرها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-health-workers', label: 'أيدي عاملة مشاركة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-health-machinery', label: 'آليات مشاركة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-peddlers', label: 'معالجة وضع الباعة الجائلين', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'رخص إدارة صحة البيئة', fields: [
+                    { id: 'env-health-cert', label: 'شهادة صحية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-transfer-lic', label: 'نقل ملكية رخصة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-renew-lic', label: 'تجديد رخصة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-new-lic', label: 'إصدار رخصة جديدة', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                ]},
+                { category: 'منجزات أخرى', fields: [
+                    { id: 'env-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                    { id: 'env-other-notes', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                ]}
+            ],
+            // Services Sub-Departments Structuring
+            services: {
+                roads: [
+                    { category: 'منجزات صيانة الطرق والمرافق', fields: [
+                        { id: 'srv-road-req', label: 'عدد طلبات صيانة الطرق', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-road-done', label: 'عدد المنفذ منها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-road-remain', label: 'عدد المتبقي', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-paint-m', label: 'عدد الأمتار الطولية لدهان الأرصفة', type: 'number', required: true, placeholder: 'أدخل الأمتار' },
+                        { id: 'srv-damaged-m', label: 'عدد الأمتار الطولية لمعالجة الأرصفة المتهالكة', type: 'number', required: true, placeholder: 'أدخل الأمتار' },
+                        { id: 'srv-planters', label: 'عدد الأحواض الزراعية المنجزة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-potholes-m2', label: 'عدد الأمتار المربعة لصيانة حفر الشوارع', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                        { id: 'srv-graffiti-m2', label: 'عدد الأمتار المربعة لإزالة الكتابات المشوهة للمظهر العام', type: 'number', required: true, placeholder: 'أدخل المساحة' }
+                    ]},
+                    { category: 'منجزات أخرى', fields: [
+                        { id: 'srv-roads-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-roads-other', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها بالأرقام', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                    ]}
+                ],
+                gardens: [
+                    { category: 'منجزات الحدائق والتجميل', fields: [
+                        { id: 'srv-garden-rounds', label: 'عدد جولات الحدائق', type: 'number', required: false, placeholder: 'أدخل العدد' },
+                        { id: 'srv-trees-planted', label: 'زراعة الأشجار', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-flowers-planted', label: 'زراعة الورود', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-wells-maint', label: 'صيانة الآبار', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-irrigation-m', label: 'عدد الأمتار الطولية لصيانة شبكات الري', type: 'number', required: true, placeholder: 'أدخل الأمتار' },
+                        { id: 'srv-grass-m2', label: 'عدد الأمتار المربعة لصيانة المسطحات الخضراء', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                        { id: 'srv-wc-maint', label: 'صيانة دورات المياه', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-garden-lights', label: 'عدد أعمدة الإنارة التي تم صيانتها بالحدائق', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-trees-trimmed', label: 'عدد الأشجار التي تم تقليمها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-playgrounds-m2', label: 'عدد الأمتار المربعة لملاعب الأطفال في الحدائق والأماكن العامة التي تم إصلاحها', type: 'number', required: true, placeholder: 'أدخل المساحة' }
+                    ]},
+                    { category: 'منجزات أخرى', fields: [
+                        { id: 'srv-gardens-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-gardens-other', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها بالأرقام', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                    ]}
+                ],
+                operations: [
+                    { category: 'منجزات التشغيل والصيانة', fields: [
+                        { id: 'srv-debris-m2', label: 'عدد الأمتار المربعة لرفع المخلفات والهدميات', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                        { id: 'srv-digging-m2', label: 'عدد الأمتار المربعة للحفر والتكسير', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                        { id: 'srv-backfill-m2', label: 'عدد الأمتار المربعة لأعمال الردم', type: 'number', required: true, placeholder: 'أدخل المساحة' },
+                        { id: 'srv-water-liters', label: 'الكميات بالتر للمياه التي تم توريدها', type: 'number', required: true, placeholder: 'أدخل اللترات' },
+                        { id: 'srv-dirt-roads-km', label: 'عدد الكيلومترات للطرق الترابية التي تم مسحها / كم', type: 'number', required: true, placeholder: 'أدخل الكيلومترات' }
+                    ]},
+                    { category: 'منجزات أخرى', fields: [
+                        { id: 'srv-ops-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-ops-other', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها بالأرقام', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                    ]}
+                ],
+                electricity: [
+                    { category: 'منجزات الكهرباء والإنارة', fields: [
+                        { id: 'srv-light-install', label: 'عدد تركيب عمود إنارة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-light-maint', label: 'عدد صيانة عمود إنارة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-lantern-install', label: 'عدد تركيب فانوس إنارة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-lantern-maint', label: 'عدد صيانة فانوس إنارة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-panel-install', label: 'عدد تركيب لوحات توزيع كهربائية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-panel-maint', label: 'عدد صيانة لوحات توزيع كهربائية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-fac-light-install', label: 'عدد تركيب إنارة وتمديدات لمرافق البلدية', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-fac-light-maint', label: 'عدد صيانة إنارة وتمديدات لمرافق البلدية', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                    ]},
+                    { category: 'منجزات أخرى', fields: [
+                        { id: 'srv-elec-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-elec-other', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها بالأرقام', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                    ]}
+                ],
+                emergency940: [
+                    { category: 'قسم طوارئ 940', fields: [
+                        { id: 'srv-940-total', label: 'عدد بلاغات الطوارئ 940', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-done', label: 'عدد المنفذ منها', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-remain', label: 'عدد المتبقي', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-rate', label: 'نسبة التنفيذ / نسبة مئوية', type: 'number', required: true, placeholder: 'مثال: 95' },
+                        { id: 'srv-940-danger', label: 'عدد البلاغات الخطرة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-urgent', label: 'عدد البلاغات الطارئة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-normal', label: 'عدد البلاغات العادية', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                    ]},
+                    { category: 'نوع البلاغات', fields: [
+                        { id: 'srv-940-env', label: 'عدد بلاغات صحة البيئة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-light', label: 'عدد بلاغات الإنارة', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-gardens', label: 'عدد بلاغات الحدائق', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-roads', label: 'عدد بلاغات صيانة الطرق', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-tech', label: 'عدد بلاغات الشؤون الفنية', type: 'number', required: true, placeholder: 'أدخل العدد' }
+                    ]},
+                    { category: 'منجزات أخرى', fields: [
+                        { id: 'srv-940-visitors', label: 'عدد المراجعين خلال هذا الأسبوع', type: 'number', required: true, placeholder: 'أدخل العدد' },
+                        { id: 'srv-940-other', label: 'اذكر المنجزات التي لم ترد في النموذج وترغب إضافتها بالأرقام', type: 'textarea', required: false, placeholder: 'تفاصيل إضافية...' }
+                    ]}
+                ]
+            }
+        };
+
+        // Navigation Controller
+        function showSection(sectionId) {
+            document.getElementById('dashboard-section').classList.add('hidden');
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('admin-panel-section').classList.add('hidden');
+
+            if(sectionId === 'dashboard') {
+                document.getElementById('dashboard-section').classList.remove('hidden');
+            } else if (sectionId === 'form') {
+                document.getElementById('form-section').classList.remove('hidden');
+            } else if (sectionId === 'admin-panel') {
+                document.getElementById('admin-panel-section').classList.remove('hidden');
+                loadReportsTable();
+                updateStats();
+            }
+        }
+
+        // Form Opening Controller
+        function openForm(depName, depKey) {
+            currentForm.depName = depName;
+            currentForm.depKey = depKey;
+            currentForm.currentStep = 1;
+
+            // Reset UI States
+            document.getElementById('municipality-form').classList.remove('hidden');
+            document.getElementById('form-success-state').classList.add('hidden');
+
+            // Setup Header text
+            document.getElementById('form-depname').innerText = depName;
+            document.getElementById('hidden-dep-name').value = depName;
+            document.getElementById('hidden-dep-key').value = depKey;
+
+            // Show Services sub-dept selector IF Services
+            const servicesContainer = document.getElementById('services-section-selector-container');
+            if (depKey === 'services') {
+                servicesContainer.classList.remove('hidden');
+            } else {
+                servicesContainer.classList.add('hidden');
+            }
+
+            // Render Step 2 dynamic fields based on selection
+            renderStep2Fields();
+
+            // Reset Step 1 default form fields values
+            document.getElementById('report-date').value = new Date().toISOString().substring(0, 10);
+            document.getElementById('report-operator').value = '';
+
+            updateStepsUI();
+            showSection('form');
+        }
+
+        // Handle Services Sub-department Change
+        function handleServicesSubDeptChange() {
+            renderStep2Fields();
+        }
+
+        // Render Step 2 Dynamic Fields based on current department structure
+        function renderStep2Fields() {
+            const container = document.getElementById('dynamic-fields-container');
+            container.innerHTML = '';
+
+            let categories = [];
+            if (currentForm.depKey === 'services') {
+                const subDept = document.getElementById('services-sub-department').value;
+                categories = departmentDataStructures.services[subDept];
+            } else {
+                categories = departmentDataStructures[currentForm.depKey];
+            }
+
+            if (!categories) return;
+
+            categories.forEach(cat => {
+                const catHeader = document.createElement('div');
+                catHeader.className = "bg-municipality-primary text-white font-bold text-sm px-4 py-2.5 rounded-xl shadow-sm mt-6 mb-4 flex items-center";
+                catHeader.innerHTML = `
+                    <svg class="w-4 h-4 ml-2 text-municipality-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>${cat.category}</span>
+                `;
+                container.appendChild(catHeader);
+
+                cat.fields.forEach(field => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'space-y-1.5 bg-white p-4 rounded-xl border border-gray-100 shadow-sm';
+
+                    const label = document.createElement('label');
+                    label.className = 'block text-sm font-bold text-gray-700 leading-snug';
+                    label.innerHTML = `${field.label} ${field.required ? '<span class="text-red-500">*</span>' : ''}`;
+                    wrapper.appendChild(label);
+
+                    if (field.type === 'textarea') {
+                        const input = document.createElement('textarea');
+                        input.id = field.id;
+                        input.dataset.label = field.label;
+                        input.rows = 3;
+                        input.required = field.required;
+                        input.placeholder = field.placeholder;
+                        input.className = 'w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:ring-2 focus:ring-municipality-primary focus:border-municipality-primary outline-none transition text-gray-700 text-sm';
+                        wrapper.appendChild(input);
+                    } else {
+                        const input = document.createElement('input');
+                        input.type = field.type;
+                        input.id = field.id;
+                        input.dataset.label = field.label;
+                        input.required = field.required;
+                        input.placeholder = field.placeholder;
+                        input.className = 'w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:ring-2 focus:ring-municipality-primary focus:border-municipality-primary outline-none transition text-gray-700 text-sm';
+                        wrapper.appendChild(input);
+                    }
+
+                    container.appendChild(wrapper);
+                });
+            });
+        }
+
+        // Multi-Step Navigation
+        function nextStep() {
+            if (currentForm.currentStep === 1) {
+                // Validate Step 1 (Date + Operator)
+                const date = document.getElementById('report-date').value;
+                const operator = document.getElementById('report-operator').value;
+                if(!date || !operator) {
+                    alert('يرجى ملء كافة الحقول الإلزامية في الخطوة الأولى (التاريخ واسم مدخل البيانات).');
+                    return;
+                }
+                currentForm.currentStep = 2;
+            } else if (currentForm.currentStep === 2) {
+                // Validate Step 2 dynamic required inputs
+                let categories = [];
+                if (currentForm.depKey === 'services') {
+                    const subDept = document.getElementById('services-sub-department').value;
+                    categories = departmentDataStructures.services[subDept];
+                } else {
+                    categories = departmentDataStructures[currentForm.depKey];
+                }
+
+                let isValid = true;
+                categories.forEach(cat => {
+                    cat.fields.forEach(f => {
+                        const el = document.getElementById(f.id);
+                        if (el && f.required && (!el.value || el.value.trim() === '')) {
+                            isValid = false;
+                        }
+                    });
+                });
+
+                if (!isValid) {
+                    alert('يرجى تعبئة كافة الحقول الإلزامية المطلوبة في التقرير.');
+                    return;
+                }
+                
+                // Compile review summary screen
+                compileReviewScreen();
+                currentForm.currentStep = 3;
+            }
+            updateStepsUI();
+        }
+
+        function prevStep() {
+            if (currentForm.currentStep > 1) {
+                currentForm.currentStep--;
+            }
+            updateStepsUI();
+        }
+
+        function updateStepsUI() {
+            // Hide all steps
+            document.getElementById('form-step-1').classList.add('hidden');
+            document.getElementById('form-step-2').classList.add('hidden');
+            document.getElementById('form-step-3').classList.add('hidden');
+
+            // Show active step
+            document.getElementById(`form-step-${currentForm.currentStep}`).classList.remove('hidden');
+
+            // Indicators
+            const i1 = document.getElementById('step-indicator-1');
+            const i2 = document.getElementById('step-indicator-2');
+            const i3 = document.getElementById('step-indicator-3');
+
+            i1.className = "flex items-center space-x-2 space-x-reverse text-gray-400";
+            i1.querySelector('span').className = "w-6 h-6 rounded-full bg-gray-200 text-gray-600 font-bold flex items-center justify-center text-xs";
+            i2.className = "flex items-center space-x-2 space-x-reverse text-gray-400";
+            i2.querySelector('span').className = "w-6 h-6 rounded-full bg-gray-200 text-gray-600 font-bold flex items-center justify-center text-xs";
+            i3.className = "flex items-center space-x-2 space-x-reverse text-gray-400";
+            i3.querySelector('span').className = "w-6 h-6 rounded-full bg-gray-200 text-gray-600 font-bold flex items-center justify-center text-xs";
+
+            if (currentForm.currentStep >= 1) {
+                i1.className = "flex items-center space-x-2 space-x-reverse text-municipality-primary font-bold";
+                i1.querySelector('span').className = "w-6 h-6 rounded-full bg-municipality-primary text-white font-bold flex items-center justify-center text-xs";
+            }
+            if (currentForm.currentStep >= 2) {
+                i2.className = "flex items-center space-x-2 space-x-reverse text-municipality-primary font-bold";
+                i2.querySelector('span').className = "w-6 h-6 rounded-full bg-municipality-primary text-white font-bold flex items-center justify-center text-xs";
+            }
+            if (currentForm.currentStep === 3) {
+                i3.className = "flex items-center space-x-2 space-x-reverse text-municipality-primary font-bold";
+                i3.querySelector('span').className = "w-6 h-6 rounded-full bg-municipality-primary text-white font-bold flex items-center justify-center text-xs";
+            }
+        }
+
+        // Compile Review Summary Data
+        function compileReviewScreen() {
+            const date = document.getElementById('report-date').value;
+            const operator = document.getElementById('report-operator').value;
+
+            let subDeptTitle = '';
+            if (currentForm.depKey === 'services') {
+                const subSel = document.getElementById('services-sub-department');
+                subDeptTitle = ` - [ ${subSel.options[subSel.selectedIndex].text} ]`;
+            }
+
+            let html = `
+                <div class="grid grid-cols-2 gap-4 pb-4 border-b border-gray-100">
+                    <div>
+                        <span class="text-xs text-gray-400 block">الإدارة المستهدفة</span>
+                        <strong class="text-gray-800 text-sm">${currentForm.depName}${subDeptTitle}</strong>
+                    </div>
+                    <div>
+                        <span class="text-xs text-gray-400 block">تاريخ التقرير</span>
+                        <strong class="text-gray-800 text-sm">${date}</strong>
+                    </div>
+                    <div class="col-span-2">
+                        <span class="text-xs text-gray-400 block">معد ومقدم التقرير</span>
+                        <strong class="text-gray-800 text-sm">${operator}</strong>
+                    </div>
+                </div>
+                <div class="pt-4 space-y-4 max-h-[350px] overflow-y-auto custom-scrollbar">
+                    <span class="text-xs text-municipality-primary font-bold block uppercase">المنجزات الأسبوعية المسجلة:</span>
+            `;
+
+            let categories = [];
+            if (currentForm.depKey === 'services') {
+                const subDept = document.getElementById('services-sub-department').value;
+                categories = departmentDataStructures.services[subDept];
+            } else {
+                categories = departmentDataStructures[currentForm.depKey];
+            }
+
+            categories.forEach(cat => {
+                html += `<div class="bg-gray-100/70 p-2 text-xs font-bold text-gray-700 rounded-md">${cat.category}</div>`;
+                cat.fields.forEach(f => {
+                    const el = document.getElementById(f.id);
+                    const val = (el && el.value.trim() !== '') ? el.value : 'لا يوجد';
+                    html += `
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 mr-2">
+                            <span class="text-xs text-gray-500 block font-semibold">${f.label}</span>
+                            <p class="text-sm text-gray-800 font-bold mt-0.5 whitespace-pre-wrap">${val}</p>
+                        </div>
+                    `;
+                });
+            });
+
+            html += `</div>`;
+            document.getElementById('report-summary-view').innerHTML = html;
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const reportId = 'REP-' + Date.now();
+            const date = document.getElementById('report-date').value;
+            const operator = document.getElementById('report-operator').value;
+
+            let categories = [];
+            let fullDepTitle = currentForm.depName;
+
+            if (currentForm.depKey === 'services') {
+                const subSel = document.getElementById('services-sub-department');
+                const subDeptKey = subSel.value;
+                fullDepTitle = `${currentForm.depName} (${subSel.options[subSel.selectedIndex].text})`;
+                categories = departmentDataStructures.services[subDeptKey];
+            } else {
+                categories = departmentDataStructures[currentForm.depKey];
+            }
+
+            const dynamicData = [];
+            categories.forEach(cat => {
+                const categoryFields = [];
+                cat.fields.forEach(f => {
+                    const el = document.getElementById(f.id);
+                    categoryFields.push({
+                        label: f.label,
+                        value: (el && el.value.trim() !== '') ? el.value : '-'
+                    });
+                });
+                dynamicData.push({
+                    category: cat.category,
+                    fields: categoryFields
+                });
+            });
+
+            const report = {
+                id: reportId,
+                departmentName: fullDepTitle,
+                departmentKey: currentForm.depKey,
+                date: date,
+                operator: operator,
+                data: dynamicData,
+                timestamp: new Date().toLocaleString('ar-EG')
+            };
+
+            // Save to local database
+            db.unshift(report);
+            localStorage.setItem('municipality_db', JSON.stringify(db));
+
+            // Show Success State
+            document.getElementById('municipality-form').classList.add('hidden');
+            document.getElementById('form-success-state').classList.remove('hidden');
+        }
+
+        // Update Statistics widgets in Control panel
+        function updateStats() {
+            document.getElementById('stat-total').innerText = db.length;
+            if(db.length > 0) {
+                document.getElementById('stat-last-date').innerText = db[0].date;
+                document.getElementById('stat-last-user').innerText = db[0].operator;
+            } else {
+                document.getElementById('stat-last-date').innerText = '-';
+                document.getElementById('stat-last-user').innerText = '-';
+            }
+        }
+
+        // Load Reports into the Table
+        function loadReportsTable() {
+            const tbody = document.getElementById('reports-table-body');
+            const emptyState = document.getElementById('empty-state');
+            const filter = document.getElementById('filter-department').value;
+
+            tbody.innerHTML = '';
+
+            let filteredDb = db;
+            if (filter !== 'ALL') {
+                filteredDb = db.filter(r => r.departmentKey === filter);
+            }
+
+            if (filteredDb.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filteredDb.forEach(report => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-50/80 transition-colors";
+
+                let excerpt = '-';
+                if(report.data && report.data.length > 0 && report.data[0].fields.length > 0) {
+                    excerpt = `${report.data[0].fields[0].label}: ${report.data[0].fields[0].value}`;
+                }
+                if(excerpt.length > 50) excerpt = excerpt.substring(0, 50) + '...';
+
+                tr.innerHTML = `
+                    <td class="px-6 py-4 font-bold text-gray-800">${report.departmentName}</td>
+                    <td class="px-6 py-4 text-gray-500 font-semibold whitespace-nowrap">${report.date}</td>
+                    <td class="px-6 py-4 font-medium text-gray-600">${report.operator}</td>
+                    <td class="px-6 py-4 text-xs text-gray-500 max-w-xs truncate">${excerpt}</td>
+                    <td class="px-6 py-4 text-center whitespace-nowrap">
+                        <button onclick="viewReportDetails('${report.id}')" class="px-3 py-1.5 bg-municipality-light hover:bg-municipality-primary hover:text-white text-municipality-primary text-xs font-bold rounded-lg transition-all ml-1.5">استعراض</button>
+                        <button onclick="deleteReport('${report.id}')" class="px-2.5 py-1.5 text-red-500 hover:bg-red-50 text-xs font-semibold rounded-lg transition">حذف</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // View Single Report in Modal
+        function viewReportDetails(reportId) {
+            const report = db.find(r => r.id === reportId);
+            if (!report) return;
+
+            let html = `
+                <div class="border-b pb-4 mb-4 space-y-1">
+                    <span class="text-xs text-gray-400 font-semibold">رقم التقرير: ${report.id}</span>
+                    <h4 class="text-lg font-bold text-municipality-dark">${report.departmentName}</h4>
+                    <p class="text-xs text-gray-500">تم رفعه وتثبيته في: ${report.timestamp}</p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-xs text-gray-400 font-bold block">تاريخ التقرير:</span>
+                        <strong class="text-sm text-gray-800">${report.date}</strong>
+                    </div>
+                    <div>
+                        <span class="text-xs text-gray-400 font-bold block">اسم الموظف المسؤول:</span>
+                        <strong class="text-sm text-gray-800">${report.operator}</strong>
+                    </div>
+                    <div class="border-t pt-3 space-y-3">
+                        <span class="text-xs text-municipality-primary font-bold block uppercase">مخرجات الإنجاز الأسبوعية بالتفصيل:</span>
+            `;
+
+            if(report.data && report.data.length > 0) {
+                report.data.forEach(cat => {
+                    html += `<div class="bg-gray-100 p-2 text-xs font-bold text-gray-700 rounded-md mt-2">${cat.category}</div>`;
+                    cat.fields.forEach(f => {
+                        html += `
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 mr-2">
+                                <span class="text-xs text-gray-500 block font-semibold">${f.label}</span>
+                                <p class="text-sm text-gray-800 font-bold mt-0.5 whitespace-pre-wrap">${f.value}</p>
+                            </div>
+                        `;
+                    });
+                });
+            }
+
+            html += `</div>`;
+
+            document.getElementById('modal-content').innerHTML = html;
+            document.getElementById('report-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('report-modal').classList.add('hidden');
+        }
+
+        // Delete report
+        function deleteReport(reportId) {
+            if(confirm('هل أنت متأكد من رغبتك في حذف هذا التقرير نهائياً؟')) {
+                db = db.filter(r => r.id !== reportId);
+                localStorage.setItem('municipality_db', JSON.stringify(db));
+                loadReportsTable();
+                updateStats();
+            }
+        }
+
+        // Clear All
+        function clearDatabase() {
+            if(confirm('تحذير: سيتم حذف كافة التقارير المرفوعة نهائياً من قاعدة البيانات المحلية. هل ترغب في الاستمرار؟')) {
+                db = [];
+                localStorage.setItem('municipality_db', JSON.stringify(db));
+                loadReportsTable();
+                updateStats();
+            }
+        }
+
+        // Export To Excel (CSV format)
+        function exportAllToCSV() {
+            if (db.length === 0) {
+                alert('لا توجد تقارير في قاعدة البيانات لتصديرها.');
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,\uFEFF"; 
+            csvContent += "الرقم التسلسلي,الإدارة,تاريخ التقرير,اسم الموظف,تاريخ الرفع\r\n";
+
+            db.forEach(report => {
+                const row = `"${report.id}","${report.departmentName}","${report.date}","${report.operator}","${report.timestamp}"`;
+                csvContent += row + "\r\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `تقارير_بلدية_حوطة_بني_تميم_${new Date().toISOString().substring(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
